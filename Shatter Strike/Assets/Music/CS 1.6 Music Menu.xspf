@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Плейлист</title>
+	<trackList>
+		<track>
+			<location>file:///C:/Users/egor0/Downloads/cs%201.6%20%28%D0%BB%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0%29%20%E2%80%94%20%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%B0%D1%8F%20%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0%20%D1%81%20%D0%BC%D0%B5%D0%BD%D1%8E.m3u8</location>
+			<duration>107859</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:item tid="0"/>
+	</extension>
+</playlist>

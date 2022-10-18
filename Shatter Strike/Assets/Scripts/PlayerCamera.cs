@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private Transform _camera;
+    [SerializeField] private Transform _spineRotator
+        ;
     [SerializeField] private Transform _bodyRotation;
     [SerializeField] private float _sensitivity = 1f;
     [SerializeField] private float _minAngle = -90f;
@@ -23,7 +24,7 @@ public class PlayerCamera : MonoBehaviour
 
             _clampedRotation.x -= mouseVertical;
             _clampedRotation.x = Mathf.Clamp(_clampedRotation.x, _minAngle, _maxAngle);
-            _camera.localEulerAngles = _clampedRotation;
+            _spineRotator.localEulerAngles = _clampedRotation;
         }
     }
 

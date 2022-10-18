@@ -6,7 +6,6 @@ public class LocalPlayer : MonoBehaviour
     [SerializeField] private float _speed = 20f;
     [SerializeField] private float _jumpForce = 10f;
     [SerializeField] private float _gravityScale = -9.81f;
-    [SerializeField] private float _lerpGravityValue = 0.01f;
     [SerializeField] private float _lerpValue = 0.001f;
     [SerializeField] private CharacterController _characterController;
 
@@ -99,7 +98,7 @@ public class LocalPlayer : MonoBehaviour
     {
         if (_gravitationIsLocked == false)
         {
-            _velocity.y = Mathf.Lerp(_velocity.y, _gravityScale, _lerpGravityValue);
+            _velocity.y = Mathf.Lerp(_velocity.y, _gravityScale, Time.deltaTime);
             _characterController.Move(_velocity);
         }
     }
@@ -108,7 +107,7 @@ public class LocalPlayer : MonoBehaviour
     {
         if (!_isGrounded && _velocity.y < 0f)
         {
-            _velocity.y = Mathf.Lerp(_velocity.y, _gravityScale, _lerpGravityValue);
+            _velocity.y = Mathf.Lerp(_velocity.y, _gravityScale, Time.deltaTime);
         }
     }
 

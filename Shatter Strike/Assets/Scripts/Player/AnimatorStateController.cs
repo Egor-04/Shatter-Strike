@@ -28,7 +28,7 @@ public class AnimatorStateController : MonoBehaviour
         {
             _accelerationSpeed = Mathf.Lerp(_accelerationSpeed, _cachedAccelerationSpeed, _lerpSpeed);
         }
-
+      
         _velocityZ = Input.GetAxis("Vertical") * _accelerationSpeed;
         _velocityX = Input.GetAxis("Horizontal") * _accelerationSpeed;
 
@@ -42,6 +42,11 @@ public class AnimatorStateController : MonoBehaviour
         else
         {
             _animator.SetBool("Walk", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _animator.SetTrigger("Jump");
         }
     }
 }

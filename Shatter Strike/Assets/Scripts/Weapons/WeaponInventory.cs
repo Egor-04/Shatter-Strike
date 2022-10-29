@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-enum WeaponType { Rifle, Pistol, Grenade }
 public class WeaponInventory : MonoBehaviour
 {
     [SerializeField] private float _mouseScrollValue;
@@ -32,24 +31,36 @@ public class WeaponInventory : MonoBehaviour
         {
             if (Input.GetKeyDown(_inputs[i]))
             {
-                DeactivateAll();
-
-                if (_weaponsBar[_j].CanChangeOther)
+                for (int j = 0; j < _weaponsBar.Length; j++)
                 {
-                    if (_weaponsBar[_j].CurrentType == i)
+                    if(_weaponsBar[j].CanChangeOther)
                     {
-                        int sameTypeCount = 0;
-                        sameTypeCount++;
-
-                        _weaponsBar[_j].HandWeapon.gameObject.SetActive(true);
-
-                        if (_j < sameTypeCount)
+                        if (_weaponsBar[j].CurrentType == (i+1))
                         {
-                            _j++;
+                            DeactivateAll();
+                            int sameTypeCount = 0;
+                            sameTypeCount++;
+
+                            _weaponsBar[_j].HandWeapon.gameObject.SetActive(true);
+
+                            if (_j < sameTypeCount)
+                            {
+                                _j++;
+                            }
+                            else if (_j >= sameTypeCount)
+                            {
+                                _j = 0;
+                            }
+                            return;
                         }
-                        else if (_j >= sameTypeCount)
+                    }
+                    else
+                    {
+                        DeactivateAll();
+                        if ((i+1) == _weaponsBar[j].CurrentType)
                         {
-                            _j = 0;
+                            _weaponsBar[j].HandWeapon.gameObject.SetActive(true);
+                            return;
                         }
                     }
                 }
@@ -66,5 +77,17 @@ public class WeaponInventory : MonoBehaviour
                 _weaponsBar[j].HandWeapon.gameObject.SetActive(false);
             }
         }
+    }
+
+    private int FindNumbers(string text)
+    {
+        int index = 0;
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            index = Convert.ToInt32(text[i]);
+        }
+
+        return index;
     }
 }

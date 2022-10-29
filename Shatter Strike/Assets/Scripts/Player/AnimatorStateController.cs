@@ -35,15 +35,6 @@ public class AnimatorStateController : MonoBehaviour
         _animator.SetFloat("Velocity Z", _velocityZ);
         _animator.SetFloat("Velocity X", _velocityX);
 
-        if (_velocityX == 0f && _velocityZ == 0f)
-        {
-            _animator.SetBool("Walk", false);
-        }
-        else
-        {
-            _animator.SetBool("Walk", true);
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _animator.SetTrigger("Jump");

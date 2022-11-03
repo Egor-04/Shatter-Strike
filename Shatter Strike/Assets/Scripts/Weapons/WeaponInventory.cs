@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using DitzelGames.FastIK;
 
+public enum WeaponType {Rifle, Pistol, Grenade}
 public class WeaponInventory : MonoBehaviour
 {
     [SerializeField] private float _mouseScrollValue;
@@ -14,6 +15,7 @@ public class WeaponInventory : MonoBehaviour
     [System.Serializable]
     public class WeaponItem
     {
+        public WeaponType WeaponType;
         public DropedWeapon DropedWeapon;
         public Weapon HandWeapon;
         public Transform LeftHandTargetIK, RightHandTargetIK;
@@ -70,6 +72,21 @@ public class WeaponInventory : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public void TakeWeaponItem(Weapon takedWeapon)
+    {
+        for (int i = 0; i < _weaponsBar.Length; i++)
+        {
+            if (takedWeapon.WeaponType == _weaponsBar[i].WeaponType)
+            {
+                _weaponsBar[i].HandWeapon = takedWeapon;
+                _weaponsBar[i].HandWeapon.gameObject.SetActive(true);
+                _leftHand.Target = _weaponsBar[i].LeftHandTargetIK;
+                _rightHand.Target = _weaponsBar[i].RightHandTargetIK;
+                _weaponsBar[i].HasItem = true;
             }
         }
     }
